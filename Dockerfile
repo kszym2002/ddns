@@ -37,7 +37,7 @@ RUN apk --no-cache --virtual  exts add          \
      
 RUN apk add --no-cache tzdata
 ENV TZ=Asia/Shanghai
-RUN crontab -l | { cat;echo "* * * * * php /root/ddns_namesilo.php";}           | crontab -     && \
+RUN crontab -l | { cat;echo "* * * * * php /root/ddns_namesilo.php";}           | crontab -    
 
 ADD . /root
 
