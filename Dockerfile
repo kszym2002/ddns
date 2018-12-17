@@ -31,13 +31,16 @@ RUN apk --no-cache --virtual  exts add          \
                             php7-xmlwriter   && \
            apk --no-cache --virtual run-times add \
                             curl                \
+			    dcron               \
                             ca-certificates  
 
      
 RUN apk add --no-cache tzdata
 ENV TZ=Asia/Shanghai
+RUN crontab -l | { cat;echo "* * * * * php /root/ddns_namesilo.php";}           | crontab -     && \
 
 ADD . /root
 
-CMD php /root/ddns_namesilo.php
+CMD CMD crond &&\ 
+     php /root/ddns_namesilo.php
        
