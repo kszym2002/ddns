@@ -42,6 +42,6 @@ RUN crontab -l | { cat;echo "* * * * * php /root/ddns_namesilo.php";}           
 
 ADD . /root
 
-CMD CMD crond &&\ 
+CMD crond &&\ 
      php /root/ddns_namesilo.php
        
